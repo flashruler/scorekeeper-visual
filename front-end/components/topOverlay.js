@@ -1,33 +1,46 @@
-export default function TopOverlay(props){
-    return(
-        <div className="my-5 grid grid-cols-3 gap-4 w-2/5">
-        {/* red alliance */}
-        <div className="grid grid-row-3">
-            <h1 className="text-xl text-center rounded-lg my-1 bg-orange-red "> 4216 - Rise of Hephaestus</h1>
-            <h1 className="text-xl text-center rounded-lg my-1 bg-orange-red ">11128 - Team Inspiration</h1>
-            <h1 className="text-xl text-center rounded-lg my-1 bg-orange-red ">11212 - The Clueless</h1>
-        </div>
-        {/* scoreboard */}
-        <div className="grid grid-cols-3 grid-row-3">
-            <div className="col-span-3 bg-gradient-to-r from-orange-red via-neutral-gray to-sky-blue rounded-md">
-                <div className="grid grid-cols-3 place-content-center">
-                    <h1 className="text-5xl text-center">01</h1>
-                    <h1 className="text-3xl text-center">2:30</h1>
-                    <h1 className="text-5xl text-center">01</h1>
+export default function TopOverlay(props) {
+    return (
+        <div className="w-max">
+
+            <div className="flex flex-col justify-center my-3">
+                <div className="flex flex-row divide-x-2">
+                    <div className="bg-orange-red rounded-tl-lg rounded-bl-lg">
+                        <div className="grid grid-cols-3 place-content-center py-1 gap-5">
+                            <h1 className="text-2xl text-center text-white">5135</h1>
+                            <h1 className="text-2xl text-center text-white">11285</h1>
+                            <h1 className="text-2xl text-center text-white">4216</h1>
+                        </div>
+                    </div>
+                    <div className="col-span-3 bg-gradient-to-r from-orange-red via-neutral-gray to-sky-blue ">
+                        <div className="grid grid-cols-3 place-content-center py-1 gap-0">
+                            <h1 className="text-5xl text-center text-white">01</h1>
+                            <h1 className="text-3xl text-center mx-1">2:30</h1>
+                            <h1 className="text-5xl text-center text-white">01</h1>
+                        </div>
+                    </div>
+                    <div className="bg-sky-blue rounded-br-lg rounded-tr-lg">
+                        <div className="grid grid-cols-3 place-content-center py-1 gap-5">
+                            <h1 className="text-2xl text-center text-white">5135</h1>
+                            <h1 className="text-2xl text-center text-white">11285</h1>
+                            <h1 className="text-2xl text-center text-white">4216</h1>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-row justify-center">
+                    <div className="bg-gray-700 my-1 grid grid-row-2 rounded-full w-2/5">
+                        <h1 className="text-center text-md text-white ">San Diego Regional</h1>
+                        <h1 className="text-center text-md text-white italic ">Match 1</h1>
+                    </div>
                 </div>
             </div>
-            {/* <div className="col-span-3 bg-gradient-to-r from-orange-red via-neutral-gray to-sky-blue rounded-md my-1"></div> */}
-            <div className="row-span-2 col-span-3 bg-neutral-gray rounded-md my-1 grid grid-cols-2">
-                <h1 className="text-center text-lg">San Diego Regional</h1>
-                <h1 className="text-center text-lg">Match 1</h1>
-            </div>
+            
+
+            {/* blue alliance */}
+            {/* <div className="grid grid-row-3">
+            <h1 className="text-xl text-center rounded-lg my-1 bg-sky-blue">11285</h1>
+            <h1 className="text-xl text-center rounded-lg my-1 bg-sky-blue">11285</h1>
+            <h1 className="text-xl text-center rounded-lg my-1 bg-sky-blue">11285</h1>
+        </div> */}
         </div>
-        {/* blue alliance */}
-        <div className="grid grid-row-3">
-            <h1 className="text-xl text-center rounded-lg my-1 bg-sky-blue">11285</h1>
-            <h1 className="text-xl text-center rounded-lg my-1 bg-sky-blue">11285</h1>
-            <h1 className="text-xl text-center rounded-lg my-1 bg-sky-blue">11285</h1>
-        </div>
-    </div>
     )
 }
