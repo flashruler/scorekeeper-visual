@@ -19,17 +19,17 @@ export default function Results(props) {
                 <div className="col-start-1 col-span-3 row-start-2 row-span-4 p-10">
                     <div className="grid grid-cols-3 grid-rows-4 h-5/6 items-center">
                         <h1 className="text-center text-white text-5xl">12</h1>
-                        <h1 className="text-center text-white italic text-2xl">AUTONOMOUS</h1>
-                        <h1 className="text-center text-white text-5xl">12</h1>
-                        <h1 className="text-center text-white text-5xl">12</h1>
-                        <h1 className="text-center text-white italic text-2xl">DRIVER CONTROL</h1>
-                        <h1 className="text-center text-white text-5xl">12</h1>
-                        <h1 className="text-center text-white text-5xl">12</h1>
-                        <h1 className="text-center text-white italic text-2xl">ENDGAME</h1>
-                        <h1 className="text-center text-white text-5xl">12</h1>
-                        <h1 className="text-center text-white text-5xl">12</h1>
-                        <h1 className="text-center text-white italic text-2xl">PENALTIES</h1>
-                        <h1 className="text-center text-white text-5xl">12</h1>
+                        <h1 className="text-center text-black  italic text-2xl">AUTONOMOUS</h1>
+                        <h1 className="text-center text-black  text-5xl">12</h1>
+                        <h1 className="text-center text-black  text-5xl">12</h1>
+                        <h1 className="text-center text-black  italic text-2xl">DRIVER CONTROL</h1>
+                        <h1 className="text-center text-black  text-5xl">12</h1>
+                        <h1 className="text-center text-black  text-5xl">12</h1>
+                        <h1 className="text-center text-black  italic text-2xl">ENDGAME</h1>
+                        <h1 className="text-center text-black  text-5xl">12</h1>
+                        <h1 className="text-center text-black  text-5xl">12</h1>
+                        <h1 className="text-center text-black  italic text-2xl">PENALTIES</h1>
+                        <h1 className="text-center text-black  text-5xl">12</h1>
                     </div>
                 </div>
                 
@@ -38,7 +38,7 @@ export default function Results(props) {
                     <div className="bg-black h-full">Video Feed URL</div>
                     
                 </div>
-                <div className="col-start-4 col-span-3 p-5 text-white text-2xl italic">Upcoming Match<MatchupComponent/></div>
+                <div className="col-start-4 col-span-3 p-5 text-black  text-2xl italic">Upcoming Match<MatchupComponent/></div>
             </div>
         </div>
     )

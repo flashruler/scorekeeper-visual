@@ -4,8 +4,8 @@ import Results from '../components/results.js'
 export default function overlay(props) {
     return (
         <div className=" w-screen h-screen">
-            <Intermission/>
-            {/* <Results/> */}
+            {/* <Intermission/> */}
+            <Results/>
             <div className="flex flex-row justify-center">
                 {/* <TopOverlay/> */}
                 
