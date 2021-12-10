@@ -16,6 +16,7 @@
 /front-end/build
 
 # misc
+.DS_Store
 /front-end/.DS_Store
 /front-end/*.pem
 
@@ -33,7 +34,8 @@
 # vercel
 /front-end/.vercel
 
+/back-end/node_modules
+/back-end/data
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/back-end/node_modules

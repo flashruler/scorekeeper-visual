@@ -20,9 +20,9 @@ export default function TopOverlay(props) {
                             <h1 className="text-center text-white text-3xl">11285</h1>
                             <h1 className="text-center text-white text-2xl">-</h1>
                         </div>
-                        <div className="col-span-7 items-center bg-blue-500 col-start-2 h-16">
+                        {/* <div className="col-span-7 items-center bg-blue-500 col-start-2 h-16">
                             
-                        </div>
+                        </div> */}
 
                     </div>
                 </div>
