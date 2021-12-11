@@ -43,7 +43,6 @@ export default function control(props) {
       </div>
       <div className="relative inline-block w-full text-gray-700">
         <select value={overlay} onChange={(e) => handleChangeOverlay(e.target.value)} className="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
-          <option value="intermission">Intermission</option>
           <option value="match-results">Match Results</option>
           <option value="top-overlay">Top Overlay</option>
         </select>

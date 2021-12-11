@@ -3,7 +3,6 @@ import MatchupComponent from "./matchupComponent";
 
 export default function Results(props: { data: MatchResults}) {
   let matchResult = props.data;
-  console.log(matchResult)
   if (matchResult) {
     return (
       <div className="bg-green-500">
