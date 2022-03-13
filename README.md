@@ -1,4 +1,6 @@
-# Scorekeeper Visual - A Graphical Overhaul Of The Stock FIRST Tech Challenge Audience Display
+![alt text](https://i.imgur.com/MmyKhF9.png)
+
+# A Graphical Overhaul to the FIRST Tech Challenge Audience Display
 
 This program is meant to overhaul the current FIRST Tech Challenge Audience Display created by FTC Alumni Cameron DeMille (FTC 8097) and Jay Buensuceso (FTC 5135)
 
