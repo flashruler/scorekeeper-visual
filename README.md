@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Scorekeeper Visual - A Graphical Overhaul Of The Stock FIRST Tech Challenge Audience Display
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This program is meant to overhaul the current FIRST Tech Challenge Audience Display created by FTC Alumni Cameron DeMille (FTC 8097) and Jay Buensuceso (FTC 5135)
 
 ## Available Scripts
 
