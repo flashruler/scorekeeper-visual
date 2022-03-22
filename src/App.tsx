@@ -72,5 +72,7 @@ export default function App() {
     }
   };
 
-  return <div>{sceneDisplay()}</div>;
+  // return <div>{sceneDisplay()}</div>;
+
+  return(<div><Randomization></Randomization></div>)
 }
