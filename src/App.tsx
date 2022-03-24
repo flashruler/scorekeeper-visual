@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PreMatchInformation from "./Scenes/preMatchInformation";
+import MatchPlay from "./Scenes/matchPlay";
 import Obs, { useObsWebSocket } from "./Api/useObsWebSocket";
 import { useScoringSystemWebSocket } from "./Api/useScoringSystemWebSocket";
 import { UpdateMessage } from "./Types/UpdateMessage";
@@ -74,5 +75,5 @@ export default function App() {
 
   // return <div>{sceneDisplay()}</div>;
 
-  return(<div><Randomization></Randomization></div>)
+  return(<div><MatchPlay/></div>)
 }
