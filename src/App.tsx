@@ -66,13 +66,6 @@ export default function App() {
     }
   }, [lastMessage]);
 
-  const getActiveMatchLoop = (activeMatchNumber: number) => {
-    console.log("starting loop");
-    return setInterval(() => {
-      console.log("Looped for match ", activeMatchNumber);
-    }, 10 * 1000);
-  };
-
   useEffect(() => {
     // TODO: remove hardcoded event codes
     fetch("http://localhost/api/v1/events/tes/rankings/")
@@ -123,6 +116,9 @@ export default function App() {
       case "MatchResults":
         return <MatchResults />;
       default:
+        Obs.send("SetCurrentScene", {
+          "scene-name": "Audience Display",
+        });
         return <h1>Default</h1>;
     }
   };
