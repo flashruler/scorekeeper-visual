@@ -42,7 +42,7 @@ export default function App() {
   useObsWebSocket(Obs);
   useInterval(() => {
     fetch(
-      `http://localhost/api/2022/v1/events/tes/matches/${activeMatchNumber}/`
+      `http://192.168.1.147/api/2022/v1/events/tes/matches/${activeMatchNumber}/`
     )
       .then((res) => res.json())
       .then(
@@ -58,7 +58,7 @@ export default function App() {
   }, 4000);
 
   useInterval(() => {
-    fetch("http://localhost/api/v1/events/tes/rankings/")
+    fetch("http://192.168.1.147/api/v1/events/tes/rankings/")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -72,7 +72,7 @@ export default function App() {
   }, 10000);
 
   useEffect(() => {
-    fetch("http://localhost/api/v1/events/tes/rankings/")
+    fetch("http://192.168.1.147/api/v1/events/tes/rankings/")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -135,7 +135,7 @@ export default function App() {
   };
 
   const getMatchResults = () => {
-    fetch(`http://localhost/api/v1/events/tes/matches/${activeMatchNumber}/`)
+    fetch(`http://192.168.1.147/api/v1/events/tes/matches/${activeMatchNumber}/`)
       .then((res) => res.json())
       .then(
         (result) => {
