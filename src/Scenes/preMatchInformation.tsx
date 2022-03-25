@@ -1,5 +1,5 @@
-import { MatchDetailed } from "../Types/MatchDetailed";
-import { Ranking } from "../Types/Ranking";
+import { MatchDetailed } from "../types/MatchDetailed";
+import { Ranking } from "../types/Ranking";
 
 const findTeamName = (rankingList: Ranking[], teamNumber: number) => {
   return rankingList[rankingList.findIndex((rank) => rank.team === teamNumber)]
@@ -71,7 +71,7 @@ export default function PreMatchInformation({
           {activeMatch.matchBrief.blue.team2}
         </h1>
         <h1 className="text-3xl font-light italic mx-24 text-white uppercase">
-          {findTeamName(rankingList, activeMatch.matchBrief.blue.team1)}
+          {findTeamName(rankingList, activeMatch.matchBrief.blue.team2)}
         </h1>
         <h1 className="text-3xl font-light italic text-white">
           {findTeamRank(rankingList, activeMatch.matchBrief.blue.team2)}

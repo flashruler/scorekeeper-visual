@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
-import { UpdateMessage } from '../Types/UpdateMessage';
+import { UpdateMessage } from '../types/UpdateMessage';
 
 export function useScoringSystemWebSocket() {
   const socketUrl = 'ws://localhost/api/v2/stream/?code=tes'

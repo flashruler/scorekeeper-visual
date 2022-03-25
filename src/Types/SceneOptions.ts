@@ -1,4 +1,6 @@
 export enum SceneOptions {
   Randomization = 'Randomization',
-  PreMatchInformation = 'PreMatchInformation'
+  PreMatchInformation = 'PreMatchInformation',
+  MatchResults = 'MatchResults',
+  MatchPlay = 'MatchPlay'
 }
