@@ -25,7 +25,7 @@ export default function MatchPlay({
       {/* Phase Indicator (Auto/Tele-op/Endgame) */}
       <div className="absolute rounded-md w-[125px] h-[32px] ml-[898px] mt-[855px] bg-[#323232]">
         <h1 className="text-center text-white uppercase text-2xl italic font-light">
-          Auto
+          {activeMatch.matchBrief.matchState}
         </h1>
       </div>
       {/* Timer */}
@@ -35,11 +35,11 @@ export default function MatchPlay({
       </h1>
       {/* Red Score */}
       <h1 className="min-w-[95px] absolute z-10 mt-[923px] ml-[815px] leading-[56px] text-[48px] text-white italic text-center">
-        0
+        {activeMatch.redScore}
       </h1>
       {/* Blue Score */}
       <h1 className="min-w-[95px] absolute z-10 mt-[923px] ml-[1010px] leading-[56px] text-[48px] text-white italic text-center">
-        0
+        {activeMatch.blueScore}
       </h1>
       <svg
         className="absolute mt-[899px] ml-[804px]"
