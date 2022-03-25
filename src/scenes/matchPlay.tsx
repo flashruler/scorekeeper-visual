@@ -1,4 +1,25 @@
-export default function MatchPlay() {
+import { FreightFrenzyMatchDetailed } from "../types/FreightFrenzyMatchDetailed";
+
+// const formatTimer = (totalSeconds: number) => {
+//   const minutes = Math.floor(totalSeconds / 60);
+//   const seconds = totalSeconds - minutes * 60;
+//   const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
+//   return `${minutes}:${displaySeconds}`;
+// };
+
+const formatSeconds = (seconds: number) => {
+  return seconds < 10 ? `0${seconds}` : seconds;
+};
+
+export default function MatchPlay({
+  activeMatch,
+  minutes,
+  seconds,
+}: {
+  activeMatch: FreightFrenzyMatchDetailed;
+  minutes: number;
+  seconds: number;
+}) {
   return (
     <div className="w-[1920px] h-[1080px] bg-green-500">
       {/* Phase Indicator (Auto/Tele-op/Endgame) */}
@@ -9,7 +30,8 @@ export default function MatchPlay() {
       </div>
       {/* Timer */}
       <h1 className=" z-10 absolute leading-[42px] text-3xl ml-[928px] mt-[930px] font-normal">
-        2:30
+        {/* {formatTimer(seconds)} */}
+        {`${minutes}:${formatSeconds(seconds)}`}
       </h1>
       {/* Red Score */}
       <h1 className="min-w-[95px] absolute z-10 mt-[923px] ml-[815px] leading-[56px] text-[48px] text-white italic text-center">

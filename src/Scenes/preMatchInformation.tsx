@@ -1,4 +1,4 @@
-import { MatchDetailed } from "../types/MatchDetailed";
+import { FreightFrenzyMatchDetailed } from "../types/FreightFrenzyMatchDetailed";
 import { Ranking } from "../types/Ranking";
 
 const findTeamName = (rankingList: Ranking[], teamNumber: number) => {
@@ -16,7 +16,7 @@ export default function PreMatchInformation({
   activeMatch,
 }: {
   rankingList: Ranking[];
-  activeMatch: MatchDetailed;
+  activeMatch: FreightFrenzyMatchDetailed;
 }) {
   console.log("rankingList", rankingList);
   console.log("activeMatch", activeMatch);

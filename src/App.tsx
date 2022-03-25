@@ -1,23 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PreMatchInformation from "./scenes/preMatchInformation";
 import Obs, { useObsWebSocket } from "./api/useObsWebSocket";
 import { useScoringSystemWebSocket } from "./api/useScoringSystemWebSocket";
 import { UpdateMessage } from "./types/UpdateMessage";
 import { Ranking } from "./types/Ranking";
-import { MatchDetailed } from "./types/MatchDetailed";
+import { FreightFrenzyMatchDetailed } from "./types/FreightFrenzyMatchDetailed";
 import Randomization from "./scenes/randomization";
 import { SceneOptions } from "./types/SceneOptions";
 import MatchPlay from "./scenes/matchPlay";
 import MatchResults from "./scenes/matchResults";
 import { useInterval } from "./hooks/useInterval";
+import { MatchDetailed } from "./types/MatchDetailed";
+import { useTimer } from "react-timer-hook";
 
 export default function App() {
   const [rankingList, setRankingList] = useState<Ranking[]>([]);
   const [activeMatchNumber, setActiveMatchNumber] = useState<number>(1);
-  const [activeMatch, setActiveMatch] = useState<MatchDetailed>();
+  const [activeMatch, setActiveMatch] = useState<FreightFrenzyMatchDetailed>();
   const [scene, setScene] = useState<SceneOptions>();
   const [randomization, setRandomization] = useState<number>();
-  const [savedLastMessage, setSavedLastMessage] = useState<UpdateMessage>();
+  const [activeMatchResults, setActiveMatchResults] = useState<MatchDetailed>();
+  // const [seconds, setSeconds] = useState<number>(150);
+  // const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
+  const expiryTimestamp = new Date();
+  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 150);
+  const { seconds, minutes, isRunning, start, pause, resume, restart } =
+    useTimer({
+      expiryTimestamp,
+    });
+
+  useEffect(() => {
+    if (minutes == 2 && seconds == 0) {
+      pause();
+      setTimeout(() => {
+        resume();
+      }, 8000);
+    }
+  }, [seconds, minutes]);
 
   const lastMessage: UpdateMessage = useScoringSystemWebSocket();
   useObsWebSocket(Obs);
@@ -27,14 +46,44 @@ export default function App() {
     )
       .then((res) => res.json())
       .then(
-        (result: MatchDetailed) => {
+        (result: FreightFrenzyMatchDetailed) => {
           console.log("Looped for match ", activeMatchNumber, result);
           setActiveMatch(result);
           setRandomization(result.randomization);
         },
-        (error) => {}
+        (error) => {
+          setScene(SceneOptions.AudienceDisplay);
+        }
       );
   }, 4000);
+
+  useInterval(() => {
+    fetch("http://localhost/api/v1/events/tes/rankings/")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          console.log("Looped for ranking ", activeMatchNumber, result);
+          setRankingList(result.rankingList);
+        },
+        (error) => {
+          setScene(SceneOptions.AudienceDisplay);
+        }
+      );
+  }, 10000);
+
+  useEffect(() => {
+    fetch("http://localhost/api/v1/events/tes/rankings/")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          console.log("Looped for ranking ", activeMatchNumber, result);
+          setRankingList(result.rankingList);
+        },
+        (error) => {
+          setScene(SceneOptions.AudienceDisplay);
+        }
+      );
+  }, []);
 
   useEffect(() => {
     if (lastMessage !== null) {
@@ -48,7 +97,8 @@ export default function App() {
         case "MATCH_LOAD":
           break;
         case "MATCH_START":
-          // Start Timer
+          restart(expiryTimestamp);
+          start();
           setScene(SceneOptions.MatchPlay);
           break;
         case "MATCH_ABORT":
@@ -56,6 +106,7 @@ export default function App() {
         case "MATCH_COMMIT":
           break;
         case "MATCH_POST":
+          getMatchResults();
           setScene(SceneOptions.MatchResults);
           break;
       }
@@ -67,29 +118,6 @@ export default function App() {
   }, [lastMessage]);
 
   useEffect(() => {
-    // TODO: remove hardcoded event codes
-    fetch("http://localhost/api/v1/events/tes/rankings/")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setRankingList(result.rankingList);
-        },
-        (error) => {}
-      );
-
-    fetch(
-      `http://localhost/api/2022/v1/events/tes/matches/${activeMatchNumber}/`
-    )
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setActiveMatch(result);
-        },
-        (error) => {}
-      );
-  }, []);
-
-  useEffect(() => {
     if (activeMatch) {
       if (activeMatch.matchBrief.matchState === "RANDOMIZED") {
         setScene(SceneOptions.Randomization);
@@ -99,6 +127,25 @@ export default function App() {
       }
     }
   }, [activeMatch]);
+
+  const setAudienceDisplay = () => {
+    Obs.send("SetCurrentScene", {
+      "scene-name": "Audience Display",
+    });
+  };
+
+  const getMatchResults = () => {
+    fetch(`http://localhost/api/v1/events/tes/matches/${activeMatchNumber}/`)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setActiveMatchResults(result);
+        },
+        (error) => {
+          setScene(SceneOptions.AudienceDisplay);
+        }
+      );
+  };
 
   const sceneDisplay = () => {
     switch (scene) {
@@ -112,14 +159,21 @@ export default function App() {
           />
         );
       case "MatchPlay":
-        return <MatchPlay />;
+        return (
+          <MatchPlay
+            activeMatch={activeMatch!}
+            seconds={seconds}
+            minutes={minutes}
+          />
+        );
       case "MatchResults":
-        return <MatchResults />;
+        return <MatchResults activeMatchResults={activeMatchResults!} />;
+      case "AudienceDisplay":
+        setAudienceDisplay();
+        return <h1>Showing Audience Display</h1>;
       default:
-        Obs.send("SetCurrentScene", {
-          "scene-name": "Audience Display",
-        });
-        return <h1>Default</h1>;
+        setAudienceDisplay();
+        return <h1>Showing Audience Display</h1>;
     }
   };
 
