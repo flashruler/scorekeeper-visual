@@ -51,6 +51,7 @@ export default function MatchPlay({
 }) {
   return (
     <div className="w-[1920px] h-[1080px] bg-green-500">
+      <div className="absolute w-[510px] h-[42px] flex flex-row items-center bg-[#323232]"><h1 className=" mx-2 text-3xl text-white font-light italic">San Diego Regional Championship {activeMatch.matchBrief.matchName}</h1></div>
       <div className="absolute w-[300px] h-[199.57px] ml-[103px] mt-[855px] flex flex-col">
         <div className="rounded-md flex items-center w-[300px] h-[61.3px] bg-[#FF6060] my-2"><h1 className="text-3xl font-light italic mx-3 text-white uppercase">{activeMatch.matchBrief.red.team1}</h1><h1 className="text-2xl font-light italic mx-1 text-white uppercase">
           {findTeamName(rankingList, activeMatch.matchBrief.red.team1)}
