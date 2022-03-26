@@ -171,6 +171,7 @@ export default function App() {
       case "MatchPlay":
         return (
           <MatchPlay
+          rankingList={rankingList!}
             activeMatch={activeMatch!}
             seconds={seconds}
             minutes={minutes}

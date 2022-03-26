@@ -17,24 +17,24 @@ interface AllianceDetailedScoring {
   allianceBalancedPoints: number,
   minorPenalties: number,
   capped: number,
-  endgameParked2: EndGamePark
+  endgameParked2: string
   endgameParkingPoints: number,
   sharedFreight: number,
   carousel: boolean
-  endgameParked1: EndGamePark
+  endgameParked1: string
   driverControlledFreight1: number,
   driverControlledFreight2: number,
   driverControlledFreight3: number,
   autoFreightPoints: number,
-  barcodeElement1: BarcodeElement,
-  barcodeElement2: BarcodeElement,
+  barcodeElement1: string,
+  barcodeElement2: string,
   allianceBalanced: boolean,
   sharedUnbalanced: boolean,
   sharedUnbalancedPoints: number,
   autoBonus2: boolean,
   carouselPoints: number,
-  autoNavigated2: AutoNavigated,
-  autoNavigated1: AutoNavigated,
+  autoNavigated2: string,
+  autoNavigated1: string,
   autoBonus1: boolean,
   driverControlledAllianceHubPoints: number,
   autoFreight2: number,
