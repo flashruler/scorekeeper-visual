@@ -11,6 +11,10 @@ const formatSeconds = (seconds: number) => {
   return seconds < 10 ? `0${seconds}` : seconds;
 };
 
+const formatMatchStatus = (matchStatus: string) => {
+  return matchStatus === "RANDOMIZED" ? "AUTO" : matchStatus;
+};
+
 export default function MatchPlay({
   activeMatch,
   minutes,
@@ -25,11 +29,11 @@ export default function MatchPlay({
       {/* Phase Indicator (Auto/Tele-op/Endgame) */}
       <div className="absolute rounded-md w-[125px] h-[32px] ml-[898px] mt-[855px] bg-[#323232]">
         <h1 className="text-center text-white uppercase text-2xl italic font-light">
-          {activeMatch.matchBrief.matchState}
+          {formatMatchStatus(activeMatch.matchBrief.matchState)}
         </h1>
       </div>
       {/* Timer */}
-      <h1 className=" z-10 absolute leading-[42px] text-3xl ml-[928px] mt-[930px] font-normal">
+      <h1 className=" z-10 absolute leading-[42px] text-3xl ml-[931px] mt-[928px] font-normal">
         {/* {formatTimer(seconds)} */}
         {`${minutes}:${formatSeconds(seconds)}`}
       </h1>
@@ -69,7 +73,7 @@ export default function MatchPlay({
         <path
           d="M75.1062 32.1672C75.1062 36.3475 74.2828 40.4869 72.6831 44.349C71.0834 48.2111 68.7386 51.7202 65.7827 54.6762C62.8268 57.6321 59.3176 59.9768 55.4555 61.5765C51.5934 63.1763 47.4541 63.9996 43.2738 63.9996C39.0935 63.9996 34.9541 63.1763 31.092 61.5765C27.23 59.9768 23.7208 57.632 20.7649 54.6761C17.809 51.7202 15.4642 48.211 13.8645 44.3489C12.2648 40.4869 11.4414 36.3475 11.4414 32.1672L43.2738 32.1672L75.1062 32.1672Z"
           stroke="#323232"
-          stroke-width="6"
+          strokeWidth="6"
           mask="url(#path-1-inside-1_125_108)"
         />
         <mask id="path-2-inside-2_125_108" fill="white">
@@ -78,7 +82,7 @@ export default function MatchPlay({
         <path
           d="M47.0334 30.1899C47.0334 25.3657 45.117 20.739 41.7057 17.3277C38.2944 13.9164 33.6678 12 28.8435 12C24.0192 12 19.3925 13.9164 15.9813 17.3277C12.57 20.739 10.6535 25.3657 10.6535 30.1899L28.8435 30.1899H47.0334Z"
           stroke="#323232"
-          stroke-width="6"
+          strokeWidth="6"
           mask="url(#path-2-inside-2_125_108)"
         />
         <mask id="path-3-inside-3_125_108" fill="white">
@@ -87,7 +91,7 @@ export default function MatchPlay({
         <path
           d="M18.38 30.19C18.38 28.9832 18.1423 27.7881 17.6805 26.6731C17.2186 25.5582 16.5417 24.5451 15.6883 23.6917C14.8349 22.8383 13.8218 22.1614 12.7069 21.6995C11.5919 21.2377 10.3968 21 9.19 21C7.98315 21 6.78812 21.2377 5.67314 21.6995C4.55816 22.1614 3.54506 22.8383 2.69169 23.6917C1.83832 24.5451 1.16139 25.5582 0.699547 26.6731C0.237706 27.7881 -1.05506e-07 28.9832 0 30.19L9.19 30.19H18.38Z"
           stroke="#323232"
-          stroke-width="6"
+          strokeWidth="6"
           mask="url(#path-3-inside-3_125_108)"
         />
       </svg>
@@ -129,7 +133,7 @@ export default function MatchPlay({
             height="42"
             rx="7.5"
             stroke="#323232"
-            stroke-width="5"
+            strokeWidth="5"
           />
         </svg>
         <h1 className="text-[#323232] justify-self-center text-5xl font-medium text-center ml-2">
@@ -173,7 +177,7 @@ export default function MatchPlay({
             height="42"
             rx="7.5"
             stroke="#323232"
-            stroke-width="5"
+            strokeWidth="5"
           />
         </svg>
         <h1 className="text-5xl text-[#323232] ml-2">DB</h1>
@@ -194,7 +198,7 @@ export default function MatchPlay({
             height="42"
             rx="7.5"
             stroke="#323232"
-            stroke-width="5"
+            strokeWidth="5"
           />
         </svg>
         <h1 className="text-5xl text-[#323232] ml-2">DB</h1>
@@ -208,13 +212,13 @@ export default function MatchPlay({
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx="16" cy="16" r="14.5" stroke="#323232" stroke-width="3" />
+          <circle cx="16" cy="16" r="14.5" stroke="#323232" strokeWidth="3" />
           <path
             d="M29.7171 20.5L16 52.2208L2.28289 20.5L29.7171 20.5Z"
             stroke="#323232"
-            stroke-width="3"
+            strokeWidth="3"
           />
-          <circle cx="16" cy="16" r="8.5" stroke="#323232" stroke-width="3" />
+          <circle cx="16" cy="16" r="8.5" stroke="#323232" strokeWidth="3" />
           <circle cx="16" cy="16" r="7" fill="white" />
         </svg>
         {/* Unparked 2 */}
@@ -226,13 +230,13 @@ export default function MatchPlay({
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx="16" cy="16" r="14.5" stroke="#323232" stroke-width="3" />
+          <circle cx="16" cy="16" r="14.5" stroke="#323232" strokeWidth="3" />
           <path
             d="M29.7171 20.5L16 52.2208L2.28289 20.5L29.7171 20.5Z"
             stroke="#323232"
-            stroke-width="3"
+            strokeWidth="3"
           />
-          <circle cx="16" cy="16" r="8.5" stroke="#323232" stroke-width="3" />
+          <circle cx="16" cy="16" r="8.5" stroke="#323232" strokeWidth="3" />
           <circle cx="16" cy="16" r="7" fill="white" />
         </svg>
       </div>

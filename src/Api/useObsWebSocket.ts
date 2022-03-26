@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 
 export default new ObsWebSocket();
 
-export function useObsWebSocket(Obs: ObsWebSocket) {
+export function useObsWebSocket(Obs: ObsWebSocket, ip: string, password: string,) {
   const [isOnline, setIsOnline] = useState(false);
 
   useEffect(() => {
     Obs.connect({
-      address: 'localhost:4444',
-      password: 'test'
+      address: `${ip}:4444`,
+      password: password
     })
       .then(() => { setIsOnline(true) })
       .catch((err: any) => {

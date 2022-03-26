@@ -15,7 +15,7 @@ export default function FullyInWarehouse(props) {
         rx="7.5"
         fill="#323232"
         stroke="white"
-        stroke-width="5"
+        strokeWidth="5"
       />
       <circle cx="23.5" cy="15.5" r="11.5" fill="white" />
       <path

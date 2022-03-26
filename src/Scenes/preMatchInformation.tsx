@@ -7,8 +7,10 @@ const findTeamName = (rankingList: Ranking[], teamNumber: number) => {
 };
 
 const findTeamRank = (rankingList: Ranking[], teamNumber: number) => {
-  return rankingList[rankingList.findIndex((rank) => rank.team === teamNumber)]
-    .ranking;
+  const rank =
+    rankingList[rankingList.findIndex((rank) => rank.team === teamNumber)]
+      .ranking;
+  return rank > -1 ? rank : "NP";
 };
 
 export default function PreMatchInformation({
@@ -33,10 +35,10 @@ export default function PreMatchInformation({
       </h1>
       {/* Red */}
       <div className=" flex flex-row absolute w-[660px] h-[57px] mt-[302px] ml-[41px] bg-[#CC4D4D] rounded-md items-center">
-        <h1 className="text-right text-3xl mx-3 font-light italic text-white">
+        <h1 className="text-right text-3xl mx-2 font-light italic text-white w-[80px]">
           {activeMatch.matchBrief.red.team1}
         </h1>
-        <h1 className="text-3xl font-light italic mx-24 text-white uppercase">
+        <h1 className="text-3xl font-light italic mx-16 text-white uppercase  w-[380px]">
           {findTeamName(rankingList, activeMatch.matchBrief.red.team1)}
         </h1>
         <h1 className="text-3xl font-light italic text-white">
@@ -44,36 +46,36 @@ export default function PreMatchInformation({
         </h1>
       </div>
       <div className="flex flex-row  items-center absolute w-[660px] h-[57px] mt-[369px] ml-[41px] bg-[#CC4D4D] rounded-md">
-        <h1 className="text-right text-3xl mx-3 font-light italic text-white">
+        <h1 className="text-right text-3xl mx-2 font-light italic text-white w-[80px]">
           {activeMatch.matchBrief.red.team2}
         </h1>
-        <h1 className="text-3xl font-light italic mx-24 text-white uppercase">
+        <h1 className="text-3xl font-light italic mx-16 text-white uppercase  w-[380px]">
           {findTeamName(rankingList, activeMatch.matchBrief.red.team2)}
         </h1>
-        <h1 className="text-3xl font-light italic text-white">
+        <h1 className="text-3xl font-light italic text-white ">
           {findTeamRank(rankingList, activeMatch.matchBrief.red.team2)}
         </h1>
       </div>
       {/* Blue */}
       <div className="flex flex-row  items-center absolute w-[660px] h-[57px] mt-[471px] ml-[41px] bg-[#4885bd] rounded-md">
-        <h1 className="text-right text-3xl mx-3 font-light italic text-white">
+        <h1 className="text-right text-3xl mx-2 font-light italic text-white w-[80px]">
           {activeMatch.matchBrief.blue.team1}
         </h1>
-        <h1 className="text-3xl font-light italic mx-24 text-white uppercase">
+        <h1 className="text-3xl font-light italic mx-16 text-white uppercase w-[380px]">
           {findTeamName(rankingList, activeMatch.matchBrief.blue.team1)}
         </h1>
-        <h1 className="text-3xl font-light italic text-white">
+        <h1 className="text-3xl font-light italic text-white justify-self-end">
           {findTeamRank(rankingList, activeMatch.matchBrief.blue.team1)}
         </h1>
       </div>
       <div className="flex flex-row  items-center absolute w-[660px] h-[57px] mt-[538px] ml-[41px] bg-[#4885bd] rounded-md">
-        <h1 className="text-right text-3xl mx-3 font-light italic text-white">
+        <h1 className="text-right text-3xl mx-2 font-light italic text-white w-[80px]">
           {activeMatch.matchBrief.blue.team2}
         </h1>
-        <h1 className="text-3xl font-light italic mx-24 text-white uppercase">
+        <h1 className="text-3xl font-light italic mx-16 text-white uppercase w-[380px]">
           {findTeamName(rankingList, activeMatch.matchBrief.blue.team2)}
         </h1>
-        <h1 className="text-3xl font-light italic text-white">
+        <h1 className="text-3xl font-light italic text-white justify-self-end">
           {findTeamRank(rankingList, activeMatch.matchBrief.blue.team2)}
         </h1>
       </div>
@@ -81,12 +83,12 @@ export default function PreMatchInformation({
         Francis Parker High School
       </h1>
       <div className="z-10 absolute w-[1011px] h-[569px] ml-[815px] mt-[255px] bg-black"></div>
-      <h1 className="absolute z-10 uppercase font-light text-3xl ml-[1592px] mt-[836px] text-black italic">
+      <h1 className="absolute z-10 uppercase font-light text-3xl ml-[1592px] mt-[836px] text-black italic w-60">
         March 26, 2022
       </h1>
-      <h1 className="absolute mt-[623px] ml-[156px] text-[200px] italic font-light">
+      {/* <h1 className="absolute mt-[623px] ml-[156px] text-[200px] italic font-light">
         4:20
-      </h1>
+      </h1> */}
     </div>
   );
 }

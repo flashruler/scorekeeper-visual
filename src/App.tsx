@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import PreMatchInformation from "./scenes/preMatchInformation";
 import Obs, { useObsWebSocket } from "./api/useObsWebSocket";
 import { useScoringSystemWebSocket } from "./api/useScoringSystemWebSocket";
@@ -14,23 +14,24 @@ import { MatchDetailed } from "./types/MatchDetailed";
 import { useTimer } from "react-timer-hook";
 
 export default function App() {
+  const SCORING_SYSTEM_IP = `${process.env.REACT_APP_SCORING_SYSTEM_IP}`;
+  const SCORING_SYSTEM_EVENT_CODE = `${process.env.REACT_APP_SCORING_SYSTEM_EVENT_CODE}`;
+  const OBS_IP = `${process.env.REACT_APP_OBS_IP}`;
+  const OBS_PASSWORD = `${process.env.REACT_APP_OBS_PASSWORD}`;
   const [rankingList, setRankingList] = useState<Ranking[]>([]);
   const [activeMatchNumber, setActiveMatchNumber] = useState<number>(1);
   const [activeMatch, setActiveMatch] = useState<FreightFrenzyMatchDetailed>();
   const [scene, setScene] = useState<SceneOptions>();
   const [randomization, setRandomization] = useState<number>();
   const [activeMatchResults, setActiveMatchResults] = useState<MatchDetailed>();
-  // const [seconds, setSeconds] = useState<number>(150);
-  // const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
   const expiryTimestamp = new Date();
   expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 150);
-  const { seconds, minutes, isRunning, start, pause, resume, restart } =
-    useTimer({
-      expiryTimestamp,
-    });
+  const { seconds, minutes, start, pause, resume, restart } = useTimer({
+    expiryTimestamp,
+  });
 
   useEffect(() => {
-    if (minutes == 2 && seconds == 0) {
+    if (minutes === 2 && seconds === 0) {
       pause();
       setTimeout(() => {
         resume();
@@ -38,11 +39,14 @@ export default function App() {
     }
   }, [seconds, minutes]);
 
-  const lastMessage: UpdateMessage = useScoringSystemWebSocket();
-  useObsWebSocket(Obs);
+  const lastMessage: UpdateMessage = useScoringSystemWebSocket(
+    SCORING_SYSTEM_IP!,
+    SCORING_SYSTEM_EVENT_CODE!
+  );
+  useObsWebSocket(Obs, OBS_IP!, OBS_PASSWORD!);
   useInterval(() => {
     fetch(
-      `http://192.168.1.147/api/2022/v1/events/tes/matches/${activeMatchNumber}/`
+      `http://${SCORING_SYSTEM_IP}/api/2022/v1/events/${SCORING_SYSTEM_EVENT_CODE}/matches/${activeMatchNumber}/`
     )
       .then((res) => res.json())
       .then(
@@ -58,7 +62,9 @@ export default function App() {
   }, 4000);
 
   useInterval(() => {
-    fetch("http://192.168.1.147/api/v1/events/tes/rankings/")
+    fetch(
+      `http://${SCORING_SYSTEM_IP}/api/v1/events/${SCORING_SYSTEM_EVENT_CODE}/rankings/`
+    )
       .then((res) => res.json())
       .then(
         (result) => {
@@ -72,7 +78,9 @@ export default function App() {
   }, 10000);
 
   useEffect(() => {
-    fetch("http://192.168.1.147/api/v1/events/tes/rankings/")
+    fetch(
+      `http://${SCORING_SYSTEM_IP}/api/v1/events/${SCORING_SYSTEM_EVENT_CODE}/rankings/`
+    )
       .then((res) => res.json())
       .then(
         (result) => {
@@ -110,7 +118,7 @@ export default function App() {
           setScene(SceneOptions.MatchResults);
           break;
       }
-
+      console.log("Setting field");
       Obs.send("SetCurrentScene", {
         "scene-name": "Field " + lastMessage.payload.field,
       });
@@ -135,7 +143,9 @@ export default function App() {
   };
 
   const getMatchResults = () => {
-    fetch(`http://192.168.1.147/api/v1/events/tes/matches/${activeMatchNumber}/`)
+    fetch(
+      `http://${SCORING_SYSTEM_IP}/api/v1/events/${SCORING_SYSTEM_EVENT_CODE}/matches/${activeMatchNumber}/`
+    )
       .then((res) => res.json())
       .then(
         (result) => {

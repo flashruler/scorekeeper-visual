@@ -15,7 +15,7 @@ export default function CompletelyParked(props) {
           height="47"
           rx="5.5"
           stroke="#323232"
-          stroke-width="5"
+          strokeWidth="5"
           shape-rendering="crispEdges"
         />
       </g>

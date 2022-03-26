@@ -14,7 +14,7 @@ export default function ScoredCargo(props) {
         height="42"
         rx="7.5"
         stroke="#323232"
-        stroke-width="5"
+        strokeWidth="5"
       />
       <rect
         x="12"

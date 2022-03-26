@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import { UpdateMessage } from '../types/UpdateMessage';
 
-export function useScoringSystemWebSocket() {
-  const socketUrl = 'ws://localhost/api/v2/stream/?code=tes'
+export function useScoringSystemWebSocket(ip: string, eventCode: string) {
+  const socketUrl = `ws://${ip}/api/v2/stream/?code=${eventCode}`
 
   const {
     lastJsonMessage,
