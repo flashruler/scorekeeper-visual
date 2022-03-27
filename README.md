@@ -2,6 +2,8 @@
 
 # A Graphical Overhaul to the FIRST Tech Challenge Audience Display
 
+![alt text](https://i.imgur.com/zDCx6Wx.jpg)
+
 This program is meant to overhaul the current FIRST Tech Challenge Audience Display created by FTC Alumni Cameron DeMille (FTC 8097) and Jay Buensuceso (FTC 5135)
 
 ## Available Scripts
