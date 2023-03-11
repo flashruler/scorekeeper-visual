@@ -51,54 +51,32 @@ export default function MatchPlay({
 }) {
   return (
     <div className="w-[1920px] h-[1080px] bg-green-500">
-      <div className="absolute w-[510px] h-[42px] flex flex-row items-center bg-[#323232]"><h1 className=" mx-2 text-3xl text-white font-light italic">San Diego Regional Championship {activeMatch.matchBrief.matchName}</h1></div>
-      <div className="absolute w-[300px] h-[199.57px] ml-[103px] mt-[855px] flex flex-col">
-        <div className="rounded-md flex items-center w-[300px] h-[61.3px] bg-[#FF6060] my-2"><h1 className="text-3xl font-light italic mx-3 text-white uppercase">{activeMatch.matchBrief.red.team1}</h1><h1 className="text-2xl font-light italic mx-1 text-white uppercase">
-          {findTeamName(rankingList, activeMatch.matchBrief.red.team1)}
-        </h1></div>
-        <div className="rounded-md flex items-center w-[300px] h-[61.3px] bg-[#FF6060] my-2"><h1 className="text-3xl font-light italic mx-3 text-white uppercase">{activeMatch.matchBrief.red.team2}</h1><h1 className="text-2xl font-light italic mx-1 text-white uppercase">
-          {findTeamName(rankingList, activeMatch.matchBrief.red.team2)}
-        </h1></div>
+      <div className="absolute w-[631px] h-[63px] ml-[644px] mt-[899px] items-center bg-[#323232] flex flex-nowrap flex-row justify-center "><h1 className=" basis-1/2 mx-2 text-xl text-white font-light">San Diego Regional Championship</h1><h1 className="ml-80 mx-2 text-3xl text-white font-light"> {activeMatch.matchBrief.matchName}</h1></div>
+      <div className="absolute w-[342px] h-[205px] ml-[12px] mt-[853px] rounded-[16px] bg-[#5AA6EC] items-center flex flex-col">
+      <h1 className="text-3xl font-bold italic mx-3 text-white uppercase">{activeMatch.matchBrief.blue.team1}</h1>
+        <h1 className="text-3xl font-bold italic mx-3 text-white uppercase">{activeMatch.matchBrief.blue.team2}</h1>
       </div>
-      <div className="absolute w-[300px] h-[199.57px] ml-[1517px] mt-[855px] flex flex-col">
-        <div className="rounded-md flex items-center w-[300px] h-[61.3px] bg-[#5AA6EC] my-2"><h1 className="text-3xl font-light italic mx-3 text-white uppercase">{activeMatch.matchBrief.blue.team1}</h1><h1 className="text-2xl font-light italic mx-1 text-white uppercase">
-          {findTeamName(rankingList, activeMatch.matchBrief.blue.team1)}
-        </h1></div>
-        <div className="rounded-md flex items-center w-[300px] h-[61.3px] bg-[#5AA6EC] my-2"><h1 className="text-3xl font-light italic mx-3 text-white uppercase">{activeMatch.matchBrief.blue.team2}</h1><h1 className="text-2xl font-light italic mx-1 text-white uppercase">
-          {findTeamName(rankingList, activeMatch.matchBrief.blue.team2)}
-        </h1></div>
-      </div>
-      {/* Phase Indicator (Auto/Tele-op/Endgame) */}
-      <div className="absolute rounded-md w-[125px] h-[32px] ml-[898px] mt-[855px] bg-[#323232]">
-        <h1 className="text-center text-white uppercase text-2xl italic font-light">
-          {formatMatchStatus(activeMatch.matchBrief.matchState)}
-        </h1>
+      <div className="absolute w-[342px] h-[205px] ml-[1566px] mt-[853px] rounded-[16px] bg-[#E26868] items-center flex flex-col">
+      <h1 className="text-3xl font-bold italic mx-3 text-white uppercase">{activeMatch.matchBrief.red.team1}</h1>
+        <h1 className="text-3xl font-bold italic mx-3 text-white uppercase">{activeMatch.matchBrief.red.team2}</h1>
       </div>
       {/* Timer */}
-      <h1 className=" z-10 absolute leading-[42px] text-3xl ml-[931px] mt-[928px] font-normal">
+      <div className="absolute w-[285px] h-[73px] ml-[817px] mt-[962px] bg-[#323232] flex flex-nowrap flex-row justify-center items-center"><div><h1 className="text-white italic text-center text-3xl mx-6">
+          {formatMatchStatus(activeMatch.matchBrief.matchState)}
+        </h1></div>
+        <h1 className="text-white text-center text-3xl mx-auto">
         {/* {formatTimer(seconds)} */}
         {`${minutes}:${formatSeconds(seconds)}`}
-      </h1>
-      {/* Red Score */}
-      <h1 className="min-w-[95px] absolute z-10 mt-[923px] ml-[815px] leading-[56px] text-[48px] text-white italic text-center">
-        {activeMatch.redScore}
-      </h1>
-      {/* Blue Score */}
-      <h1 className="min-w-[95px] absolute z-10 mt-[923px] ml-[1010px] leading-[56px] text-[48px] text-white italic text-center">
+      </h1></div>
+      <div className="absolute w-[173px] h-[73px] ml-[644px] mt-[962px] bg-[#68A0E2]"><h1 className="text-6xl text-white italic text-center">
         {activeMatch.blueScore}
-      </h1>
-      <svg
-        className="absolute mt-[899px] ml-[804px]"
-        width="312"
-        height="102"
-        viewBox="0 0 312 102"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect y="19" width="312" height="65" rx="10" fill="#323232" />
-        <circle cx="156" cy="51" r="51" fill="#757575" />
-        <circle cx="156" cy="51" r="41" fill="#C4C4C4" />
-      </svg>
+      </h1></div>
+      <div className="absolute w-[173px] h-[73px] ml-[1102px] mt-[962px] bg-[#E26868]"><h1 className="text-6xl text-white italic text-center">
+        {activeMatch.redScore}
+      </h1></div>
+
+    
+
       {activeMatch.matchBrief.matchState==="AUTO" ? <div>{/* Autonomous Icons Red Side*/}
       {/* If Duck is not scored */}
       {activeMatch.red.carousel ? <div className="absolute ml-[696px] mt-[855.33px]"><ScoredDuck/></div>: <div className="absolute ml-[696px] mt-[855.33px]"><UnscoredDuck/></div>}

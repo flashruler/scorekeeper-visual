@@ -14,8 +14,10 @@ import { MatchDetailed } from "./types/MatchDetailed";
 import { useTimer } from "react-timer-hook";
 
 export default function App() {
-  const SCORING_SYSTEM_IP = `${process.env.REACT_APP_SCORING_SYSTEM_IP}`;
-  const SCORING_SYSTEM_EVENT_CODE = `${process.env.REACT_APP_SCORING_SYSTEM_EVENT_CODE}`;
+  //const SCORING_SYSTEM_IP = `${process.env.REACT_APP_SCORING_SYSTEM_IP}`;
+  const SCORING_SYSTEM_IP = `localhost`;
+  //const SCORING_SYSTEM_EVENT_CODE = `${process.env.REACT_APP_SCORING_SYSTEM_EVENT_CODE}`;
+  const SCORING_SYSTEM_EVENT_CODE = `test`;
   const OBS_IP = `${process.env.REACT_APP_OBS_IP}`;
   const OBS_PASSWORD = `${process.env.REACT_APP_OBS_PASSWORD}`;
   const [rankingList, setRankingList] = useState<Ranking[]>([]);
@@ -46,7 +48,7 @@ export default function App() {
   useObsWebSocket(Obs, OBS_IP!, OBS_PASSWORD!);
   useInterval(() => {
     fetch(
-      `http://${SCORING_SYSTEM_IP}/api/2022/v1/events/${SCORING_SYSTEM_EVENT_CODE}/matches/${activeMatchNumber}/`
+      `http://${SCORING_SYSTEM_IP}/api/2023/v1/events/${SCORING_SYSTEM_EVENT_CODE}/matches/${activeMatchNumber}/`
     )
       .then((res) => res.json())
       .then(
