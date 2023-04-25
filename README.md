@@ -11,6 +11,10 @@
 
 This program is meant to overhaul the current FIRST Tech Challenge Audience Display created by FTC Alumni Cameron DeMille (FTC 8097) and Jay Buensuceso (FTC 5135)
 
+## Release
+
+This software is currently under beta testing within the San Diego Region.
+
 ## Available Scripts
 
 In the project directory, you can run:
